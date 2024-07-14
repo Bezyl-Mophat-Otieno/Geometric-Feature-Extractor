@@ -1,5 +1,6 @@
 import trimesh
 import numpy as np
+import json
 import matplotlib.pyplot as plt
 from matplotlib.colors import Normalize, LinearSegmentedColormap
 
@@ -35,9 +36,23 @@ def process_mesh(file_path):
 
     # Optionally, visualize the mesh
     mesh.show()
+    # Prepare features dictionary
+    features = {
+        "vertices": vertices.tolist(),
+        "faces": faces.tolist(),
+        "curvatures": estimated_mean_curvatures.tolist()
+    }
+
+    return features
 
 if __name__ == "__main__":
     # Replace with the path to your 3D model file
     model_path = r'C:\Users\BezylMophatOtieno\source\repos\FreeCAD-models\combination-lock\STLs\axis-2-digits.stl'
 
-    process_mesh(model_path)
+    features = process_mesh(model_path)
+        # Save features to a JSON file
+    output_path = r'C:\Users\BezylMophatOtieno\source\repos\FreeCAD-models\combination-lock\model-pipeline\output\extracted_features.json'
+    with open(output_path, 'w') as json_file:
+        json.dump(features, json_file, indent=4)
+
+    print(f"Extracted features saved to {output_path}")
