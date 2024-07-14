@@ -1,21 +1,25 @@
-# load_model.py
-
+# load_model.py loads a 3D CAD model from an STL file and displays it in a 3D viewer using the open3d library. This script can be used to quickly visualize 3D models and inspect their geometry. The load_and_display_model function takes the path to the STL file as input, loads the model, and displays it in a 3D viewer.
 import open3d as o3d
+import numpy as np
+
 
 def load_and_display_model(model_path):
-    # Load the 3D CAD Model
+    # Load the STL model
     mesh = o3d.io.read_triangle_mesh(model_path)
     
-    if not mesh.is_empty():
-        print(f"Model loaded successfully from {model_path}")
-    else:
-        print(f"Failed to load model from {model_path}")
-
-    # Display the model
+    # Check if the mesh is loaded successfully
+    if not mesh.has_vertices():
+        print("Mesh is empty.")
+        return
+    
+    # Compute vertex normals for better visualization
+    mesh.compute_vertex_normals()
+    
+    # Visualize the mesh
     o3d.visualization.draw_geometries([mesh])
     
     return mesh
 
 if __name__ == "__main__":
-    model_path = r'C:\Users\BezylMophatOtieno\source\repos\FreeCAD-models\combination-lock\model-pipeline\output\axis-2-digits-simplified-mesh.stl'
+    model_path = r'C:\Users\BezylMophatOtieno\source\repos\FreeCAD-models\combination-lock\model-pipeline\output\mesh_with_curvature.stl'
     load_and_display_model(model_path)

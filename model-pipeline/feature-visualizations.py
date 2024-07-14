@@ -1,3 +1,5 @@
+# This script visualizes the extracted features from a 3D mesh model.
+
 import json
 import matplotlib.pyplot as plt
 import numpy as np
@@ -43,14 +45,24 @@ def visualize_mesh_with_curvature(mesh_path, curvatures, output_path):
     # Optionally, visualize the mesh interactively
     mesh.show()
 
+    # Plotting color bar for curvature values
+    plt.figure(figsize=(6, 2))
+    plt.title("Curvature Color Mapping")
+    plt.imshow([np.arange(len(face_colors))], aspect='auto', cmap=colormap, norm=norm)
+    plt.colorbar(label='Curvature Value')
+    plt.xlabel('Curvature Color Mapping')
+    plt.yticks([])  # Hide y-axis ticks
+    plt.savefig(f"{output_path}_colorbar.png", bbox_inches='tight')  # Save colorbar
+    plt.show()
+
 if __name__ == "__main__":
     # Paths to input files
     features_path = r'C:\Users\BezylMophatOtieno\source\repos\FreeCAD-models\combination-lock\model-pipeline\output\extracted_features.json'
-    normalized_mesh_path = r'C:\Users\BezylMophatOtieno\source\repos\FreeCAD-models\combination-lock\STLs\axis-2-digits.stl'
+    normalized_mesh_path = r'C:\Users\BezylMophatOtieno\source\repos\FreeCAD-models\combination-lock\STLs\tablerectanglev1.stl'
     
     # Paths to output files
     curvature_histogram_path = r'C:\Users\BezylMophatOtieno\source\repos\FreeCAD-models\combination-lock\model-pipeline\output\curvature_histogram.png'
-    mesh_with_curvature_path = r'C:\Users\BezylMophatOtieno\source\repos\FreeCAD-models\combination-lock\model-pipeline\output\mesh_with_curvature.ply'
+    mesh_with_curvature_path = r'C:\Users\BezylMophatOtieno\source\repos\FreeCAD-models\combination-lock\model-pipeline\output\mesh_with_curvature.stl'
 
     # Load extracted features
     features = load_features(features_path)

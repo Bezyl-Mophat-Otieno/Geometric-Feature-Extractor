@@ -1,5 +1,4 @@
-# mesh_simplification.py
-
+# mesh_simplification.py simplifies a mesh by reducing the number of triangles in the mesh. The simplified mesh is saved as an STL file and displayed in a 3D viewer. The mesh simplification is done using the Quadric Edge Collapse Decimation algorithm. The target number of triangles in the simplified mesh is set to 1000 in this example. You can adjust this value based on your requirements.
 import open3d as o3d
 from load_view_model import load_and_display_model
 import os

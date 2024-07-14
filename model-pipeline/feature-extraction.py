@@ -1,56 +1,63 @@
 import trimesh
 import numpy as np
 import json
-import matplotlib.pyplot as plt
-from matplotlib.colors import Normalize, LinearSegmentedColormap
 
+def recognize_shapes(vertices, faces):
+    shapes = []
 
+    # Example logic to identify rectangles and squares
+    # (You can replace this with actual geometric analysis)
+    for face in faces:
+        face_vertices = vertices[face]
+        # Simple checks to identify shapes
+        if len(face) == 4:
+            if is_square(face_vertices):
+                shapes.append({"type": "Square", "dimensions": calculate_dimensions(face_vertices)})
+            else:
+                shapes.append({"type": "Rectangle", "dimensions": calculate_dimensions(face_vertices)})
+
+    # Add logic for cylinders or other shapes as needed
+
+    return shapes
+
+def is_square(face_vertices):
+    # Check if the vertices form a square (simple distance checks)
+    return np.isclose(np.linalg.norm(face_vertices[0] - face_vertices[1]), 
+                       np.linalg.norm(face_vertices[1] - face_vertices[2])) and \
+           np.isclose(np.linalg.norm(face_vertices[1] - face_vertices[2]), 
+                       np.linalg.norm(face_vertices[2] - face_vertices[3]))
+
+def calculate_dimensions(face_vertices):
+    # Calculate dimensions of the shape
+    length = np.linalg.norm(face_vertices[0] - face_vertices[1])
+    width = np.linalg.norm(face_vertices[1] - face_vertices[2])
+    return {"length": length, "width": width}
 
 def process_mesh(file_path):
     # Load the mesh
     mesh = trimesh.load(file_path)
-    
-    # Extract vertices and faces
     vertices = mesh.vertices
     faces = mesh.faces
-    print(f"Loaded mesh with {len(vertices)} vertices and {len(faces)} faces")
-
-    # Compute surface normals
-    mesh.face_normals
-    print(f"Computed surface normals for {len(mesh.face_normals)} faces")
-
-    # Estimate mean curvatures (simplified approach)
     estimated_mean_curvatures = np.linalg.norm(mesh.face_normals, axis=1)
-    print(f"Estimated mean curvatures for {len(estimated_mean_curvatures)} faces")
 
-    # Define a colormap for curvature values
-    cmap = plt.cm.jet  # Example colormap, choose one that suits your visualization needs
-    norm = Normalize(vmin=np.min(estimated_mean_curvatures), vmax=np.max(estimated_mean_curvatures))
-    colormap = LinearSegmentedColormap.from_list("my_colormap", cmap(np.linspace(0, 1, 256)))
+    # Recognize shapes
+    recognized_shapes = recognize_shapes(vertices, faces)
 
-    # Map mean curvatures to colors
-    face_colors = colormap(norm(estimated_mean_curvatures))
-
-    # Set face colors in RGBA format
-    mesh.visual.face_colors = (face_colors[:, :3] * 255).astype(np.uint8)
-
-    # Optionally, visualize the mesh
-    mesh.show()
     # Prepare features dictionary
     features = {
         "vertices": vertices.tolist(),
         "faces": faces.tolist(),
-        "curvatures": estimated_mean_curvatures.tolist()
+        "curvatures": estimated_mean_curvatures.tolist(),
+        "shapes": recognized_shapes
     }
 
     return features
 
 if __name__ == "__main__":
-    # Replace with the path to your 3D model file
-    model_path = r'C:\Users\BezylMophatOtieno\source\repos\FreeCAD-models\combination-lock\STLs\axis-2-digits.stl'
-
+    model_path = r'C:\Users\BezylMophatOtieno\source\repos\FreeCAD-models\combination-lock\STLs\tablerectanglev1.stl'
     features = process_mesh(model_path)
-        # Save features to a JSON file
+
+    # Save features to a JSON file
     output_path = r'C:\Users\BezylMophatOtieno\source\repos\FreeCAD-models\combination-lock\model-pipeline\output\extracted_features.json'
     with open(output_path, 'w') as json_file:
         json.dump(features, json_file, indent=4)

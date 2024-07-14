@@ -1,3 +1,4 @@
+# feature-analysis.py analyzes geometric features extracted from a 3D mesh. The script computes statistical measures such as the number of vertices, faces, and mean curvatures of the mesh. The feature statistics are saved to CSV and JSON files for further analysis or visualization.
 import numpy as np
 import pandas as pd
 import json
