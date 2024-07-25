@@ -58,7 +58,7 @@ def visualize_mesh_with_curvature(mesh_path, curvatures, output_path):
 if __name__ == "__main__":
     # Paths to input files
     features_path = r'C:\Users\BezylMophatOtieno\source\repos\FreeCAD-models\combination-lock\model-pipeline\output\extracted_features.json'
-    normalized_mesh_path = r'C:\Users\BezylMophatOtieno\source\repos\FreeCAD-models\combination-lock\STLs\tablerectanglev1.stl'
+    normalized_mesh_path = r'C:\Users\BezylMophatOtieno\source\repos\FreeCAD-models\combination-lock\STLs\wheel-digit-5.stl'
     
     # Paths to output files
     curvature_histogram_path = r'C:\Users\BezylMophatOtieno\source\repos\FreeCAD-models\combination-lock\model-pipeline\output\curvature_histogram.png'

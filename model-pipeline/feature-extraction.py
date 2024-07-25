@@ -1,3 +1,4 @@
+#feature-extraction.py extracts geometric features from a 3D mesh. The script identifies shapes such as rectangles and squares from the mesh faces and calculates their dimensions. The extracted features are saved to a JSON file for further analysis or visualization.
 import trimesh
 import numpy as np
 import json
@@ -6,7 +7,6 @@ def recognize_shapes(vertices, faces):
     shapes = []
 
     # Example logic to identify rectangles and squares
-    # (You can replace this with actual geometric analysis)
     for face in faces:
         face_vertices = vertices[face]
         # Simple checks to identify shapes
@@ -16,7 +16,6 @@ def recognize_shapes(vertices, faces):
             else:
                 shapes.append({"type": "Rectangle", "dimensions": calculate_dimensions(face_vertices)})
 
-    # Add logic for cylinders or other shapes as needed
 
     return shapes
 
@@ -54,7 +53,7 @@ def process_mesh(file_path):
     return features
 
 if __name__ == "__main__":
-    model_path = r'C:\Users\BezylMophatOtieno\source\repos\FreeCAD-models\combination-lock\STLs\tablerectanglev1.stl'
+    model_path = r'C:\Users\BezylMophatOtieno\source\repos\FreeCAD-models\combination-lock\STLs\wheel-digit-9.stl'
     features = process_mesh(model_path)
 
     # Save features to a JSON file

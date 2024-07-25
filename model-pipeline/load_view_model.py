@@ -21,5 +21,5 @@ def load_and_display_model(model_path):
     return mesh
 
 if __name__ == "__main__":
-    model_path = r'C:\Users\BezylMophatOtieno\source\repos\FreeCAD-models\combination-lock\model-pipeline\output\mesh_with_curvature.stl'
+    model_path = r'C:\Users\BezylMophatOtieno\source\repos\FreeCAD-models\combination-lock\STLs\wheel-digit-9.stl'
     load_and_display_model(model_path)
