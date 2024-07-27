@@ -74,41 +74,15 @@ def process_mesh(file_path):
     shapes = [{'faces': [i]} for i in range(len(faces))]
     shapes = refine_shapes(shapes, vertices, faces)
     
-    # Define color mapping
-    color_mapping = {
-        'cylinder': [1, 0, 0],  # Red
-        'square': [0, 1, 0],  # Green
-        'rectangle': [0, 0, 1],  # Blue
-        'circle': [1, 1, 0],  # Yellow
-        'triangle': [0, 1, 1]  # Cyan
-    }
-
-# Corrected part of the process_mesh function
-    for face_index, shape_info in enumerate(shapes):
-            face_color = color_mapping.get(shape_info['shape'], [0, 0, 0])  # Default to black if no match
-            # Ensure face_color is a 3-element tuple
-            if isinstance(face_color, list):
-                face_color = tuple(face_color)
-                print(face_color)
-            # Set the face color for the current face
-            mesh.visual.face_colors[face_index] = face_color
-
-
-    # Save the colored mesh to a .ply file
-    colored_model_path = r'C:\Users\BezylMophatOtieno\source\repos\FreeCAD-models\combination-lock\model-pipeline\output\colored_mesh.ply'
-    o3d.io.write_triangle_mesh(colored_model_path, mesh)
-
-    return shapes, mesh
+    
+    return shapes
 
 if __name__ == "__main__":
     model_path = r'C:\Users\BezylMophatOtieno\source\repos\FreeCAD-models\combination-lock\STLs\axis-2-digits.stl'
-    shapes, mesh = process_mesh(model_path)
-    output_path = r'C:\Users\BezylMophatOtieno\source\repos\FreeCAD-models\combination-lock\model-pipeline\output\classified_shapes.json'
+    shapes = process_mesh(model_path)
+    output_path = r'C:\Users\BezylMophatOtieno\source\repos\FreeCAD-models\combination-lock\model-pipeline\output\statistics\classified_shapes.json'
 
     with open(output_path, 'w') as json_file:
         json.dump(shapes, json_file, indent=4)
-
-    # Visualize the colored mesh
-    o3d.visualization.draw_geometries([mesh])
 
     print(f"Classified shapes saved to {output_path}")

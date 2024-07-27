@@ -19,7 +19,7 @@ def create_point_cloud_from_mesh(mesh, density=10000):
 
 def visualize_point_cloud(points, image_path):
     """
-    Visualize a point cloud with black dots using Open3D and save the visualization as an image.
+    Visualize a point cloud with red dots using Open3D and save the visualization as an image.
     
     Parameters:
         points (numpy.ndarray): Array of points to visualize.
@@ -29,7 +29,7 @@ def visualize_point_cloud(points, image_path):
     pcd = o3d.geometry.PointCloud()
     pcd.points = o3d.utility.Vector3dVector(points)
     
-    # Set point color to black
+    # Set point color to red
     colors = np.asarray(pcd.points)
     pcd.colors = o3d.utility.Vector3dVector(np.ones_like(colors) * [1, 0, 0])
     
@@ -46,6 +46,7 @@ def visualize_point_cloud(points, image_path):
     vis.poll_events()
     vis.update_renderer()
     vis.capture_screen_image(image_path)
+    print(f"Point cloud visualization saved to {image_path}")
     
     # Run the visualizer and save the image
     vis.run()
@@ -54,7 +55,7 @@ def visualize_point_cloud(points, image_path):
 if __name__ == "__main__":
     # Load the mesh
     model_path = r'C:\Users\BezylMophatOtieno\source\repos\FreeCAD-models\combination-lock\STLs\axis-3-digits.stl'
-    image_path = r'C:\Users\BezylMophatOtieno\source\repos\FreeCAD-models\combination-lock\STLs\axis-3-digits-point-cloud.png'
+    image_path = r'C:\Users\BezylMophatOtieno\source\repos\FreeCAD-models\combination-lock\model-pipeline\output\images\axis-3-digits-point-cloud.png'
     # Load the mesh
     mesh = trimesh.load(model_path)
 

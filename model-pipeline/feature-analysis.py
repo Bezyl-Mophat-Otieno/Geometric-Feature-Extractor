@@ -62,7 +62,7 @@ def save_features(feature_df, output_dir):
 
 if __name__ == "__main__":
     # Load the extracted features from the JSON file
-    extracted_features_path = r'C:\Users\BezylMophatOtieno\source\repos\FreeCAD-models\combination-lock\model-pipeline\output\extracted_features.json'
+    extracted_features_path = r'C:\Users\BezylMophatOtieno\source\repos\FreeCAD-models\combination-lock\model-pipeline\output\statistics\extracted_features.json'
     with open(extracted_features_path, 'r') as json_file:
         features = json.load(json_file)
 
@@ -78,5 +78,5 @@ if __name__ == "__main__":
     print(feature_df)
 
     # Save feature statistics
-    output_directory = "output"  # You can change this to your desired output directory
+    output_directory = r"C:\Users\BezylMophatOtieno\source\repos\FreeCAD-models\combination-lock\model-pipeline\output\statistics"  # You can change this to your desired output directory
     save_features(feature_df, output_directory)

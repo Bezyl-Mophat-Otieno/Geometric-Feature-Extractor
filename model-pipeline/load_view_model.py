@@ -21,5 +21,5 @@ def load_and_display_model(model_path):
     return mesh
 
 if __name__ == "__main__":
-    model_path = r'C:\Users\BezylMophatOtieno\source\repos\FreeCAD-models\combination-lock\STLs\wheel-digit-9.stl'
+    model_path = r'C:\Users\BezylMophatOtieno\source\repos\FreeCAD-models\combination-lock\STLs\axis-3-digits.stl'
     load_and_display_model(model_path)

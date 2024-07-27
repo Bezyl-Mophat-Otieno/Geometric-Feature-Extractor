@@ -81,7 +81,7 @@ if __name__ == "__main__":
     mesh = load_model(model_path)
     
     
-    hand_drawn_image_path = r'C:\Users\BezylMophatOtieno\source\repos\FreeCAD-models\combination-lock\STLs\keycore-3-digits.png'
+    hand_drawn_image_path = r'C:\Users\BezylMophatOtieno\source\repos\FreeCAD-models\combination-lock\model-pipeline\output\images\axis-3-digits-hand-drawn.png'
     create_hand_drawn_effect(mesh, hand_drawn_image_path)
 
 

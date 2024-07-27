@@ -14,8 +14,8 @@ def simplify_mesh(mesh, target_number_of_triangles=1000):
     return simplified_mesh
 
 if __name__ == "__main__":
-    model_path = r'C:\Users\BezylMophatOtieno\source\repos\FreeCAD-models\combination-lock\STLs\wheel-digit-9.stl'
-    output_dir = r'C:\Users\BezylMophatOtieno\source\repos\FreeCAD-models\combination-lock\model-pipeline\output'
+    model_path = r'C:\Users\BezylMophatOtieno\source\repos\FreeCAD-models\combination-lock\STLs\axis-3-digits.stl'
+    output_dir = r'C:\Users\BezylMophatOtieno\source\repos\FreeCAD-models\combination-lock\model-pipeline\output\modified-models'
     output_path = os.path.join(output_dir, 'axis-2-digits-simplified-mesh.stl')
 
     # Create output directory if it doesn't exist
