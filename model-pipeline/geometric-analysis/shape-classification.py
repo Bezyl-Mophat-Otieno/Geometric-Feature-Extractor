@@ -78,7 +78,7 @@ def process_mesh(file_path):
     return shapes
 
 if __name__ == "__main__":
-    model_path = r'C:\Users\BezylMophatOtieno\source\repos\FreeCAD-models\combination-lock\STLs\axis-2-digits.stl'
+    model_path = r'C:\Users\BezylMophatOtieno\source\repos\FreeCAD-models\combination-lock\model-pipeline\output\modified-models\axis-2-digits-normalized-mesh.stl'
     shapes = process_mesh(model_path)
     output_path = r'C:\Users\BezylMophatOtieno\source\repos\FreeCAD-models\combination-lock\model-pipeline\output\statistics\classified_shapes.json'
 

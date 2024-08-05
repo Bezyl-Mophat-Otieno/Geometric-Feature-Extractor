@@ -15,7 +15,7 @@ def normalize_mesh(mesh):
     return mesh
 
 if __name__ == "__main__":
-    model_path = r'C:\Users\BezylMophatOtieno\source\repos\FreeCAD-models\combination-lock\STLs\axis-3-digits.stl'
+    model_path = r'C:\Users\BezylMophatOtieno\source\repos\FreeCAD-models\combination-lock\STLs\wheel-digit-9.stl'
     output_dir = r'C:\Users\BezylMophatOtieno\source\repos\FreeCAD-models\combination-lock\model-pipeline\output\modified-models'
     output_path = os.path.join(output_dir, 'axis-2-digits-normalized-mesh.stl')
 

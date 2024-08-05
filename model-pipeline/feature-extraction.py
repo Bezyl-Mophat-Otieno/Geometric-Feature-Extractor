@@ -22,13 +22,14 @@ def process_mesh(file_path):
     features = {
         "vertices": vertices.tolist(),
         "faces": faces.tolist(),
+        "edges": mesh.edges.tolist(),
         "curvatures": estimated_mean_curvatures.tolist(),
     }
 
     return features
 
 if __name__ == "__main__":
-    model_path = r'C:\Users\BezylMophatOtieno\source\repos\FreeCAD-models\combination-lock\STLs\axis-3-digits.stl'
+    model_path = r'C:\Users\BezylMophatOtieno\source\repos\FreeCAD-models\combination-lock\STLs\wheel-digit-9.stl'
     features = process_mesh(model_path)
 
     # Save features to a JSON file

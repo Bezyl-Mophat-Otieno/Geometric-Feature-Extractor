@@ -52,7 +52,7 @@ if __name__ == "__main__":
     
     # Paths to output files
     curvature_histogram_path = r'C:\Users\BezylMophatOtieno\source\repos\FreeCAD-models\combination-lock\model-pipeline\output\images\curvature_histogram.png'
-    mesh_with_curvature_path = r'C:\Users\BezylMophatOtieno\source\repos\FreeCAD-models\combination-lock\model-pipeline\output\modified-models\mesh_with_curvature.stl'
+    mesh_with_curvature_path = r'C:\Users\BezylMophatOtieno\source\repos\FreeCAD-models\combination-lock\model-pipeline\output\modified-models\visualized-mesh.stl'
 
     # Load extracted features
     features = load_features(features_path)
