@@ -29,7 +29,7 @@ def process_mesh(file_path):
     return features
 
 if __name__ == "__main__":
-    model_path = r'C:\Users\BezylMophatOtieno\source\repos\FreeCAD-models\combination-lock\STLs\wheel-digit-9.stl'
+    model_path = r'C:\Users\BezylMophatOtieno\source\repos\FreeCAD-models\combination-lock\STLs\custom-shared.stl'
     features = process_mesh(model_path)
 
     # Save features to a JSON file

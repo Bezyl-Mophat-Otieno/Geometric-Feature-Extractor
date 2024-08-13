@@ -1,10 +1,10 @@
 [
     {
-        "vertex_count":280,
-        "face_count":560,
-        "curvature_mean":1.000000001,
-        "curvature_std":0.000000024,
-        "curvature_min":0.999999917,
-        "curvature_max":1.0000000691
+        "vertex_count":1179,
+        "face_count":2398,
+        "curvature_mean":1.0000000002,
+        "curvature_std":0.0000000105,
+        "curvature_min":0.999999964,
+        "curvature_max":1.000000031
     }
 ]

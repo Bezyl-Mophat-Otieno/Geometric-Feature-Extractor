@@ -54,7 +54,7 @@ def visualize_point_cloud(points, image_path):
 
 if __name__ == "__main__":
     # Load the mesh
-    model_path = r'C:\Users\BezylMophatOtieno\source\repos\FreeCAD-models\combination-lock\STLs\axis-3-digits.stl'
+    model_path = r'C:\Users\BezylMophatOtieno\source\repos\FreeCAD-models\combination-lock\STLs\custom-shared.stl'
     image_path = r'C:\Users\BezylMophatOtieno\source\repos\FreeCAD-models\combination-lock\model-pipeline\output\images\axis-3-digits-point-cloud.png'
     # Load the mesh
     mesh = trimesh.load(model_path)
