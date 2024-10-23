@@ -12,9 +12,9 @@ import open3d as o3d
 from ui_based_services.load_view_model import load_and_display_model
 from ui_based_services.feature_extraction import process_mesh
 from ui_based_services.feature_analysis import analyze_features
-from ui_based_services.feature_visualizations import visualize_curvature_distribution
-from ui_based_services.feature_visualizations import visualize_mesh_with_curvature
-from ui_based_services.feature_visualizations import load_features
+from ui_based_services.feature_visualizations import (
+    visualize_curvature_distribution, load_features, visualize_mesh_with_curvature,
+)
 # Streamlit App
 st.set_page_config(page_title="3D Model Viewer", layout="wide")
 
@@ -201,15 +201,5 @@ elif selection == "Feature Visualization":
         if st.button("Open 3D Mesh Viewer"):
             trimesh.Scene([mesh]).show()
         
-        # Create a downloadable STL file with the curvature visualization
-        with tempfile.NamedTemporaryFile(delete=False, suffix=".stl") as temp_mesh_file:
-            mesh.export(temp_mesh_file.name)
-            st.download_button(
-                label="Download Mesh with Curvature Visualization as STL",
-                data=open(temp_mesh_file.name, 'rb').read(),
-                file_name="curvature_visualized_mesh.stl",
-                mime="application/vnd.ms-pkistl"
-            )
-
     else:
         st.info("Please upload both an STL file and a JSON file containing extracted features to proceed with visualization.")
