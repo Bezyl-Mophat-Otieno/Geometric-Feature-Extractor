@@ -15,10 +15,10 @@ def load_and_display_model(model_path):
     mesh.compute_vertex_normals()
     
     # Visualize the mesh
-    o3d.visualization.draw_geometries([mesh])
+    # o3d.visualization.draw_geometries([mesh])
     
     return mesh
 
-if __name__ == "__main__":
-    model_path = r'C:\Users\BezylMophatOtieno\source\repos\FreeCAD-models\combination-lock\STLs\custom-shared.stl'
-    load_and_display_model(model_path)
+# if __name__ == "__main__":
+#     model_path = r'C:\Users\BezylMophatOtieno\source\repos\FreeCAD-models\combination-lock\STLs\custom-shared.stl'
+#     load_and_display_model(model_path)
