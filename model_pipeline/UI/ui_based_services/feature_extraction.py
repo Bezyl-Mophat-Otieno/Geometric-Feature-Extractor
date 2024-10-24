@@ -10,7 +10,7 @@ def calculate_dimensions(face_vertices):
     width = np.linalg.norm(face_vertices[1] - face_vertices[2])
     return {"length": length, "width": width}
 
-def process_mesh(file_path):
+def process_mesh_features(file_path):
     # Load the mesh
     mesh = trimesh.load(file_path)
     vertices = mesh.vertices
