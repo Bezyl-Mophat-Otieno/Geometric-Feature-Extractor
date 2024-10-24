@@ -151,5 +151,5 @@ def visualize_shapes_on_model(mesh, xy_shapes, xz_shapes, yz_shapes):
 
 if __name__ == "__main__":
     model_path = r'C:\Users\BezylMophatOtieno\source\repos\FreeCAD-models\combination-lock\STLs\custom-shared.stl'
-    output_json_path = r'C:\Users\BezylMophatOtieno\source\repos\FreeCAD-models\combination-lock\model-pipeline\output\statistics\extracted_shapes.json'
+    output_json_path = r'C:\Users\BezylMophatOtieno\source\repos\FreeCAD-models\combination-lock\model_pipeline\output\statistics\extracted_shapes.json'
     process_mesh(model_path, output_json_path)

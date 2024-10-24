@@ -80,7 +80,7 @@ def process_mesh(file_path):
 if __name__ == "__main__":
     model_path = r'C:\Users\BezylMophatOtieno\source\repos\FreeCAD-models\combination-lock\model-pipeline\output\modified-models\axis-2-digits-normalized-mesh.stl'
     shapes = process_mesh(model_path)
-    output_path = r'C:\Users\BezylMophatOtieno\source\repos\FreeCAD-models\combination-lock\model-pipeline\output\statistics\classified_shapes.json'
+    output_path = r'C:\Users\BezylMophatOtieno\source\repos\FreeCAD-models\combination-lock\model_pipeline\output\statistics\classified_shapes.json'
 
     with open(output_path, 'w') as json_file:
         json.dump(shapes, json_file, indent=4)

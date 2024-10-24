@@ -19,7 +19,7 @@ from ui_based_services.feature_visualizations import (
 st.set_page_config(page_title="3D Model Viewer", layout="wide")
 
 # Sidebar for navigation
-st.sidebar.title("CAD FEATURE EXTRACTION")
+st.sidebar.title("MENU ITEMS")
 selection = st.sidebar.radio("Go to", ["Open3D Viewer", "Feature Extraction", "Feature Analysis", "Feature Visualization"])
 
 
@@ -41,11 +41,15 @@ if selection == "Open3D Viewer":
         if mesh:
             # Display the mesh interactively
             st.write("Displaying the uploaded 3D model:")
+            
+            features_df = pd.DataFrame({
+            "Number of Vertices": [len(mesh.vertices)],
+            "Number of Triangles": [len(mesh.triangles)],
+            })
+            st.table(features_df)
             if st.button("Open 3D Viewer"):
                 # Open 3D visualizer window
                 o3d.visualization.draw_geometries([mesh], window_name="3D Model Viewer", width=800, height=600, left=50, top=50)
-            st.write(f"Number of vertices: {len(mesh.vertices)}")
-            st.write(f"Number of triangles: {len(mesh.triangles)}")
         else:
             st.error("Failed to load the model. Please check the file format.")
 
