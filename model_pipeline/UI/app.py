@@ -26,8 +26,8 @@ from ui_based_services.model_visualization_annotated import (
     load_mesh, visualize_mesh_with_annotations
 )
 
-from ui_based_services.model_visualization_sketched import (
-    load_model, create_hand_drawn_effect
+from ui_based_services.model_visualization_labelled import (
+    visualize_mesh_with_face_annotations
 )
 # Streamlit App
 st.set_page_config(page_title="3D Model Viewer", layout="wide")
@@ -227,7 +227,7 @@ if main_section == "Model Viewer & Feature Extraction":
 elif main_section == "Geometric Analysis":
     # New section for Geometric Analysis
     st.sidebar.title("Geometric Analysis")
-    analysis_selection = st.sidebar.radio("Choose Analysis Tool", ["Shape Classification", "Model Visualization - Plotted", "Model Visualization - Annotated"])
+    analysis_selection = st.sidebar.radio("Choose Analysis Tool", ["Shape Classification", "Model Visualization - Plotted", "Model Visualization - Annotated", "Model Visualization - Labeled"])
 
     if analysis_selection == "Shape Classification":
         st.header("Shape Classification")
@@ -319,3 +319,22 @@ elif main_section == "Geometric Analysis":
             if st.button("Visualize Annotated Model"):
                 # Visualize the annotated mesh
                 visualize_mesh_with_annotations(mesh)
+    elif analysis_selection == "Model Visualization - Labeled":
+
+        st.header("Model Visualization - Labeled")
+        st.write("View the labeled Model")
+        # Upload the STL file
+        uploaded_file = st.file_uploader("Upload your STL model", type=['stl'])
+
+        if uploaded_file is not None:
+            # Create a temporary file to save the uploaded STL
+            with tempfile.NamedTemporaryFile(delete=False, suffix='.stl') as temp_file:
+                temp_file.write(uploaded_file.read())
+                temp_file_path = temp_file.name
+
+            # Load the mesh using trimesh
+            mesh = load_mesh(temp_file_path)
+
+            # Button to visualize the model with labels
+            if st.button("Visualize Labelled Model"):
+                visualize_mesh_with_face_annotations(mesh)
