@@ -29,6 +29,9 @@ from ui_based_services.model_visualization_annotated import (
 from ui_based_services.model_visualization_labelled import (
     visualize_mesh_with_face_annotations
 )
+from ui_based_services.shape_visualization_cylinder import (
+    identify_circular_faces, visualize_mesh_with_highlighted_faces
+)
 # Streamlit App
 st.set_page_config(page_title="3D Model Viewer", layout="wide")
 
@@ -227,7 +230,7 @@ if main_section == "Model Viewer & Feature Extraction":
 elif main_section == "Geometric Analysis":
     # New section for Geometric Analysis
     st.sidebar.title("Geometric Analysis")
-    analysis_selection = st.sidebar.radio("Choose Analysis Tool", ["Shape Classification", "Model Visualization - Plotted", "Model Visualization - Annotated", "Model Visualization - Labeled"])
+    analysis_selection = st.sidebar.radio("Choose Analysis Tool", ["Shape Classification", "Model Visualization - Plotted", "Model Visualization - Annotated", "Model Visualization - Labeled", "Model visualization - shape identification"])
 
     if analysis_selection == "Shape Classification":
         st.header("Shape Classification")
@@ -338,3 +341,24 @@ elif main_section == "Geometric Analysis":
             # Button to visualize the model with labels
             if st.button("Visualize Labelled Model"):
                 visualize_mesh_with_face_annotations(mesh)
+
+    elif analysis_selection == "Model visualization - shape identification":
+        st.header("Model visualization - shape identification")
+        st.write("View the shapes identification from the model")   
+        # Upload model
+        uploaded_file = st.file_uploader("Upload STL model", type=['stl'])
+
+        if uploaded_file is not None:
+            with tempfile.NamedTemporaryFile(delete=False, suffix='.stl') as temp_file:
+                temp_file.write(uploaded_file.read())
+                temp_file_path = temp_file.name
+
+            # Load mesh and identify circular faces
+            mesh = load_mesh(temp_file_path)
+            circular_faces = identify_circular_faces(mesh)
+
+            # Button to visualize with highlights
+            if st.button("Visualize with Highlighted Circular Faces"):
+                visualize_mesh_with_highlighted_faces(mesh, circular_faces)
+
+
