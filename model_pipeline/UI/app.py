@@ -344,21 +344,9 @@ elif main_section == "Geometric Analysis":
 
     elif analysis_selection == "Model visualization - shape identification":
         st.header("Model visualization - shape identification")
-        st.write("View the shapes identification from the model")   
-        # Upload model
-        uploaded_file = st.file_uploader("Upload STL model", type=['stl'])
-
-        if uploaded_file is not None:
-            with tempfile.NamedTemporaryFile(delete=False, suffix='.stl') as temp_file:
-                temp_file.write(uploaded_file.read())
-                temp_file_path = temp_file.name
-
-            # Load mesh and identify circular faces
-            mesh = load_mesh(temp_file_path)
-            circular_faces = identify_circular_faces(mesh)
-
-            # Button to visualize with highlights
-            if st.button("Visualize with Highlighted Circular Faces"):
-                visualize_mesh_with_highlighted_faces(mesh, circular_faces)
+        st.markdown(
+            '<a href="https://reliable-klepon-644d8b.netlify.app" target="_blank" style="font-size:20px; color:blue;">Please click the link below to view the shapes identification from the model</a>',
+            unsafe_allow_html=True
+        )
 
 
