@@ -345,7 +345,7 @@ elif main_section == "Geometric Analysis":
     elif analysis_selection == "Model visualization - shape identification":
         st.header("Model visualization - shape identification")
         st.markdown(
-            '<a href="https://reliable-klepon-644d8b.netlify.app" target="_blank" style="font-size:20px; color:blue;">Please click the link below to view the shapes identification from the model</a>',
+            '<a href="https://3-d-cad-analysis-javascript-solution.vercel.app/" target="_blank" style="font-size:20px; color:blue;">Please click the link below to view the shapes identification from the model</a>',
             unsafe_allow_html=True
         )
 
